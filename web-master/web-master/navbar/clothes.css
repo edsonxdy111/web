@@ -1,0 +1,142 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.custom-navbar {
+    background-color: #343a40; /* 深灰色背景 */
+}
+
+.custom-navbar .nav-link{
+    color:white;
+}
+
+.navbar-nav {
+    margin-right: 15px; /* 調整登入與購物車按鈕和搜尋框的距離 */
+}
+
+.custom-navbar .btn-outline-light {
+    border-color: #ffffff; /* 白色邊框 */
+    color: #ffffff; /* 白色文字 */
+}
+
+.custom-navbar .btn-outline-light:hover {
+    background-color: #ffc107; /* 金黃色背景 */
+    border-color: #ffc107; /* 金黃色邊框 */
+    color: #343a40; /* 深灰色文字 */
+}
+
+
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.card-img-container {
+    width: 100%; /* 確保寬度適應卡片 */
+    height: 400px; /* 統一高度 */
+    overflow: hidden; /* 隱藏超出部分 */
+    background-color: #e9ecef; /* 背景顏色以防圖片載入失敗 */
+    display: flex; /* 使用 Flexbox 居中圖片 */
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img-container img {
+    width: 100%; /* 圖片寬度填滿 */
+    height: 100%; /* 圖片高度填滿 */
+    object-fit: cover; /* 確保比例裁剪 */
+    object-position: center; /* 居中裁剪 */
+}
+
+
+
+
+.card-title a {
+    text-decoration: none;
+    color: #212529;
+    font-weight: 500;
+}
+
+.card-title a:hover {
+    color: #007bff;
+}
+
+.btn-buy {
+    background-color: #ffc107;
+    color: #343a40;
+    border-radius: 8px;
+    padding: px 10px;
+    font-size: 1rem;
+    border: none;
+    transition: background-color 0.3s ease;
+    
+}
+
+.btn-buy:hover {
+    background-color: #e0a800;
+    cursor: pointer;
+}
+
+.text-start {
+    color: #495057;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.fixed-footer {
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background-color:#343a40;
+    color: white;
+    text-align: center;
+
+}
+
+
+
+/* 搜尋欄樣式 */
+.search-bar {
+    background-color: #ffffff; /* 搜尋欄背景顏色 */
+    overflow: hidden; /* 確保圓角 */
+}
+
+.search-bar .form-control {
+    order: none; /* 移除輸入框的邊框 */
+    box-shadow: none; /* 移除陰影 */
+    background-color: #ffffff; /* 與搜尋欄背景一致 */
+}
+
+.search-bar .form-control:focus {
+    outline: none; /* 聚焦時移除外框 */
+    box-shadow: none; /* 聚焦時無陰影 */
+}
+b
+.search-bar .input-group-text {
+    background-color: #ffffff; /* 放大鏡背景與搜尋欄一致 */
+    border: none; /* 移除邊框 */
+    cursor: pointer; /* 指標變為可點擊 */
+}
+
+.search-bar .bi-search {
+    font-size: 1.2rem; /* 圖標大小 */
+    color: #6c757d; /* 灰色圖標 */
+}
+
+.search-color{
+    color: white;
+}
+
+form {
+    margin-left: auto; /* 讓搜尋框靠右 */
+    width: auto; /* 避免占滿可用寬度 */
+}
+
+

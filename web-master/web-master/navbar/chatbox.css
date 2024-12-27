@@ -1,0 +1,46 @@
+/* chatbot.css */
+
+/* 設置對話框容器 */
+.chat-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* 設置對話框區域 */
+.messages {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+/* 設置單條訊息的樣式 */
+.message {
+    margin: 10px 0;
+}
+
+/* 設置機器人訊息的樣式 */
+.message.bot {
+    text-align: left;
+}
+
+/* 設置用戶訊息的樣式 */
+.message.user {
+    text-align: right;
+}
+
+/* 輸入框和發送按鈕的樣式 */
+.input-group {
+    width: 100%;
+}
+
+.input-group input {
+    border-radius: 20px;
+}

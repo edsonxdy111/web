@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Shop</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+
+    <!-- 商品詳細 Modal -->
+    <div class="modal fade" id="productDetailModal" tabindex="-1" aria-labelledby="productDetailModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productDetailModalLabel">商品詳細</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- 商品詳細將會被動態填充 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">登入</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">帳號</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">密碼</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">登入</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Modal -->
+    <div class="modal fade" id="shoppingCartModal" tabindex="-1" aria-labelledby="shoppingCartLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="shoppingCartLabel">購物車</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="cartItems" class="list-group">
+                        <!-- 購物車商品列表會動態插入 -->
+                    </ul>
+                    <div class="mt-3 text-end">
+                        <h5>總金額: <span id="totalPrice">$0</span></h5>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary" id="checkoutButton">結帳</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="custom-navbar navbar navbar-expand-lg navbar-dark bg-dark shadow">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">MyShop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            分類
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="clothes.html">上衣</a></li>
+                            <li><a class="dropdown-item" href="pants.html">下身</a></li>
+                            <li><a class="dropdown-item" href="accessories.html">配件</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="order.html">訂單</a></li>
+                    <!-- 新增客服中心連結 -->
+                    <li class="nav-item"><a class="nav-link" href="chatbox.html">客服中心</a></li>
+                </ul>
+
+                <div class="d-flex align-items-center ms-auto">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                <i class="bi bi-box-arrow-in-right"></i> 登入
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#shoppingCartModal">
+                                <i class="bi bi-cart"></i> 購物車
+                            </a>
+                        </li>
+                    </ul>
+                    <form class="d-flex align-items-center">
+                        <div class="input-group search-bar shadow-sm rounded-pill w-100">
+                            <input type="text" id="searchInput" class="form-control border-0" placeholder="搜尋商品" aria-label="Search">
+                            <button class="btn btn-link input-group-text bg-transparent border-0" type="submit">
+                                <i class="bi bi-search text-secondary"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container mt-5">
+        <!-- 上衣區域 -->
+        <div>
+            <h2 class="text-start">為你推薦--上衣</h2>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card card-hover">
+                    <div class="card-img-container">
+                        <img src="image/上衣1.png" class="img-fluid" alt="商品圖片">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="#">韓國 馬海毛 字母 針織 毛衣</a></h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$1180</span>
+                            <button id="cartButton" class="btn btn-buy">立即購買</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-hover">
+                    <div class="card-img-container">
+                        <img src="image/上衣10.png" class="img-fluid" alt="商品圖片">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="#">吊染 漸層 洞洞 毛衣</a></h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$1180</span>
+                            <button id="cartButton" class="btn btn-buy">立即購買</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 下身區域 -->
+        <div class="mt-5">
+            <h2 class="text-start">為你推薦--下身</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card card-hover">
+                    <div class="card-img-container">
+                        <img src="image/下身2.png" class="img-fluid" alt="商品圖片">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="#">韓國 側拼接 抽繩 氣球 牛仔褲</a></h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$800</span>
+                            <button class="btn btn-buy">立即購買</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-hover">
+                    <div class="card-img-container">
+                        <img src="image/下身12.png" class="img-fluid" alt="商品圖片">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="#">側口袋 迷彩 七分 工作褲</a></h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">$820</span>
+                            <button class="btn btn-buy">立即購買</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="index.js"></script>
+
+</body>
+
+</html>
